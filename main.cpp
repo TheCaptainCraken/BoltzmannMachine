@@ -1,10 +1,18 @@
 #include <iostream>
+#include <stdlib.h>
+#include <fstream>
 
-int main(){
-    char c;
-    ifstream file ("dataset/train-images-idx3-ubyte");
-    file.read(&c, sizeof(char));
+using namespace std;
 
-    cout << c;
+int main() {
+    uint32_t c;
+    u_int a;
 
+    ifstream file {"/home/whiterose/CLionProjects/BoltzmannMachine/dataset/t10k-labels-idx1-ubyte", std::ios_base::binary};
+    if(!file.good())
+        cout << "error";
+    file.read((char*) &c, sizeof(uint32_t));
+
+
+    cout << (uint32_t) c;
 }
