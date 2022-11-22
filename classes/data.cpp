@@ -4,6 +4,13 @@
 
 #include "data.h"
 
+data::data(){
+    feature_vector = new std::vector<uint8_t>;
+}
+data::~data(){
+
+}
+
 void data::set_feature_vector(std::vector<uint8_t> * vect){
     feature_vector = vect;
 }
