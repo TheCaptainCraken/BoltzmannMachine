@@ -2,17 +2,14 @@
 #include <stdlib.h>
 #include <fstream>
 
-using namespace std;
-
-int main() {
-    uint32_t c;
-    u_int a;
-
-    ifstream file {"/home/whiterose/CLionProjects/BoltzmannMachine/dataset/t10k-labels-idx1-ubyte", std::ios_base::binary};
-    if(!file.good())
-        cout << "error";
-    file.read((char*) &c, sizeof(uint32_t));
+#include "data.h"
+#include "data_handler.h"
 
 
-    cout << (uint32_t) c;
+int main(){
+    data_handler *dh = new data_handler();
+    dh->read_feature_vector("../dataset/train-images-idx3-ubyte");
+    dh->read_feature_labels("../dataset/train-labels-idx1-ubyte");
+    dh->split_data();
+    dh->count_classes();
 }
